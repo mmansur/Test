@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/apikit" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/apikit http://www.mulesoft.org/schema/mule/apikit/current/mule-apikit.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+    <apikit:config name="api-config" raml="api.raml" consoleEnabled="true" consolePath="console" doc:name="Router"/>
+    <flow name="api-main">
+        <http:listener config-ref="http-lc-0.0.0.0-8081" path="/api/*" doc:name="HTTP"/>
+        <apikit:router config-ref="api-config" doc:name="APIkit Router"/>
+        <exception-strategy ref="api-apiKitGlobalExceptionMapping" doc:name="Reference Exception Strategy"/>
+    </flow>
+    <flow name="post:/file:api-config">
+        <set-payload value="{&#xA;  &quot;kind&quot;: &quot;storage#object&quot;,&#xA;  &quot;id&quot;: &quot;rituals-pos-test/transactions2.json/1459542810961000&quot;,&#xA;  &quot;selfLink&quot;: &quot;https://www.googleapis.com/storage/v1/b/rituals-pos-test/o/transactions2.json&quot;,&#xA;  &quot;name&quot;: &quot;transactions2.json&quot;,&#xA;  &quot;bucket&quot;: &quot;rituals-pos-test&quot;,&#xA;  &quot;generation&quot;: &quot;1459542810961000&quot;,&#xA;  &quot;metageneration&quot;: &quot;1&quot;,&#xA;  &quot;contentType&quot;: &quot;application/json; charset=UTF-8&quot;,&#xA;  &quot;timeCreated&quot;: &quot;2016-04-01T20:33:30.923Z&quot;,&#xA;  &quot;updated&quot;: &quot;2016-04-01T20:33:30.923Z&quot;,&#xA;  &quot;storageClass&quot;: &quot;STANDARD&quot;,&#xA;  &quot;size&quot;: &quot;5510&quot;,&#xA;  &quot;md5Hash&quot;: &quot;SThQQITYlOmrFnfWvaGYgA==&quot;,&#xA;  &quot;mediaLink&quot;: &quot;https://www.googleapis.com/download/storage/v1/b/rituals-pos-test/o/transactions2.json?generation=1459542810961000&amp;alt=media&quot;,&#xA;  &quot;crc32c&quot;: &quot;z406zg==&quot;,&#xA;  &quot;etag&quot;: &quot;COjIoNak7ssCEAE=&quot;&#xA;}" doc:name="Set Payload"/>
+    </flow>
+    <apikit:mapping-exception-strategy name="api-apiKitGlobalExceptionMapping">
+        <apikit:mapping statusCode="404">
+            <apikit:exception value="org.mule.module.apikit.exception.NotFoundException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Resource not found&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+        <apikit:mapping statusCode="405">
+            <apikit:exception value="org.mule.module.apikit.exception.MethodNotAllowedException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Method not allowed&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+        <apikit:mapping statusCode="415">
+            <apikit:exception value="org.mule.module.apikit.exception.UnsupportedMediaTypeException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Unsupported media type&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+        <apikit:mapping statusCode="406">
+            <apikit:exception value="org.mule.module.apikit.exception.NotAcceptableException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Not acceptable&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+        <apikit:mapping statusCode="400">
+            <apikit:exception value="org.mule.module.apikit.exception.BadRequestException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Bad request&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+    </apikit:mapping-exception-strategy>
+</mule>

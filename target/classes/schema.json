@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://jsonschema.net",
+  "type": "object",
+  "properties": {
+    "kind": {
+      "id": "http://jsonschema.net/kind",
+      "type": "string"
+    },
+    "id": {
+      "id": "http://jsonschema.net/id",
+      "type": "string"
+    },
+    "selfLink": {
+      "id": "http://jsonschema.net/selfLink",
+      "type": "string"
+    },
+    "name": {
+      "id": "http://jsonschema.net/name",
+      "type": "string"
+    },
+    "bucket": {
+      "id": "http://jsonschema.net/bucket",
+      "type": "string"
+    },
+    "generation": {
+      "id": "http://jsonschema.net/generation",
+      "type": "string"
+    },
+    "metageneration": {
+      "id": "http://jsonschema.net/metageneration",
+      "type": "string"
+    },
+    "contentType": {
+      "id": "http://jsonschema.net/contentType",
+      "type": "string"
+    },
+    "timeCreated": {
+      "id": "http://jsonschema.net/timeCreated",
+      "type": "string"
+    },
+    "updated": {
+      "id": "http://jsonschema.net/updated",
+      "type": "string"
+    },
+    "storageClass": {
+      "id": "http://jsonschema.net/storageClass",
+      "type": "string"
+    },
+    "size": {
+      "id": "http://jsonschema.net/size",
+      "type": "string"
+    },
+    "md5Hash": {
+      "id": "http://jsonschema.net/md5Hash",
+      "type": "string"
+    },
+    "mediaLink": {
+      "id": "http://jsonschema.net/mediaLink",
+      "type": "string"
+    },
+    "crc32c": {
+      "id": "http://jsonschema.net/crc32c",
+      "type": "string"
+    },
+    "etag": {
+      "id": "http://jsonschema.net/etag",
+      "type": "string"
+    }
+  },
+  "required": [
+    "kind",
+    "id",
+    "selfLink",
+    "name",
+    "bucket",
+    "generation",
+    "metageneration",
+    "contentType",
+    "timeCreated",
+    "updated",
+    "storageClass",
+    "size",
+    "md5Hash",
+    "mediaLink",
+    "crc32c",
+    "etag"
+  ]
+}

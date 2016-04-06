@@ -1,0 +1,18 @@
+{
+  "kind": "storage#object",
+  "id": "rituals-pos-test/transactions2.json/1459542810961000",
+  "selfLink": "https://www.googleapis.com/storage/v1/b/rituals-pos-test/o/transactions2.json",
+  "name": "transactions2.json",
+  "bucket": "rituals-pos-test",
+  "generation": "1459542810961000",
+  "metageneration": "1",
+  "contentType": "application/json; charset=UTF-8",
+  "timeCreated": "2016-04-01T20:33:30.923Z",
+  "updated": "2016-04-01T20:33:30.923Z",
+  "storageClass": "STANDARD",
+  "size": "5510",
+  "md5Hash": "SThQQITYlOmrFnfWvaGYgA==",
+  "mediaLink": "https://www.googleapis.com/download/storage/v1/b/rituals-pos-test/o/transactions2.json?generation=1459542810961000&alt=media",
+  "crc32c": "z406zg==",
+  "etag": "COjIoNak7ssCEAE="
+}

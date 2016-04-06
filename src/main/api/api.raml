@@ -1,0 +1,13 @@
+#%RAML 0.8
+baseUri: http://mocksvc.mulesoft.com/mocks/9098c1ae-e4ea-4a02-aaac-0552aa67c381
+title: Rituals - Google BigData Cloud
+version: 1
+/file:
+  post:
+    description: Add a file to the Ritual rituals-pos-test bucket
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include response.json
+            schema: !include schema.json
